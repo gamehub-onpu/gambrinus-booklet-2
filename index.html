@@ -196,7 +196,17 @@
                         case 'image':
                             if (imageFiles[i]) {
                                 // Объявляем плоскость под изображение
-                                let geometry1 = new THREE.PlaneBufferGeometry(1, 1, 4, 4);
+                              let [width, height] = [1, 1]
+                               if (i === 0) {
+                                [width, height] = [0.522, 0.452].map(el => el * 3)
+                               }
+                               if (i === 1) {
+                                [width, height] = [0.287, 0.524].map(el => el * 5)
+                               }
+                               if (i === 2) {
+                                [width, height] = [0.296, 0.436].map(el => el * 3)
+                               }
+                               let geometry1 = new THREE.PlaneBufferGeometry(width, height, 4, 4);
                                 // Загружаем изображение
                                 let loader = new THREE.TextureLoader();
                                 let texture = loader.load(`${imageFiles[i]}`, render);
